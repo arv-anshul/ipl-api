@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import Any
 
 import numpy as np
@@ -5,6 +6,29 @@ import numpy as np
 from src.core.data import IPL_DF
 from src.core.encoder import numpy_encoder
 from src.core.exception import API_ERROR_MSG
+
+
+class Team(Enum):
+    CSK = 'Chennai Super Kings'
+    DCH = 'Deccan Chargers'
+    DC = 'Delhi Capitals'
+    DD = 'Delhi Daredevils'
+    GL = 'Gujarat Lions'
+    GT = 'Gujarat Titans'
+    KXIP = 'Kings XI Punjab'
+    KTK = 'Kochi Tuskers Kerala'
+    KKR = 'Kolkata Knight Riders'
+    LSG = 'Lucknow Super Giants'
+    MI = 'Mumbai Indians'
+    PW = 'Pune Warriors'
+    PK = 'Punjab Kings'
+    RR = 'Rajasthan Royals'
+    RPS = 'Rising Pune Supergiant'
+    RCB = 'Royal Challengers Bangalore'
+    SRH = 'Sunrisers Hyderabad'
+
+    def decode(team: str) -> str:
+        return getattr(Team, team).value
 
 
 def get_all_teams() -> dict[str, str]:
